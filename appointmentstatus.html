@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+{%include 'user/header.html' %}
+<div class="col-md-8"></div>
+ {% for p in appointmentstatus %}
+
+<div class = "alert alert-success col-md-8 alert-dismissible">
+	  <!-- <button type="button" onclick="close({{p[8]}})" class="close" >close</button> -->
+	  <button  class="close" onclick="notclose({{p[8]}})" data-dismiss="alert">&times;</button>
+ <h4>{{p[6]}}</h4>
+ <br>
+  <h6>Faculty emailid : {{p[1]}}</h6>
+
+  <h6>Faculty type : {{p[2]}}</h6>
+  <h6>Usermailid   : {{p[3]}}</h6>
+  <h6>User type    : {{p[4]}}</h6>
+  <h6>Notification date and time   : {{p[5]}}</h6>
+  <h6>Type       : {{p[6]}}</h6>
+  <h6>Status       : {{p[7]}}</h6>
+
+</div>
+{% endfor %}
+</div>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+  
+  
+   
+
+<script type="text/javascript">
+	function notclose(nid){
+		console.log(nid)
+		$.post('/close', {id:nid}, function(response){ 
+      // alert("success");
+      // $("#dis").html(response);
+});
+	}
+</script>
+{%include 'user/footer.html' %}
+  

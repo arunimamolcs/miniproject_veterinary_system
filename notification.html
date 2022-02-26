@@ -1,0 +1,44 @@
+{%include 'user/header.html' %}
+<section class="blog_w3ls py-5" id="why">
+		<div class="container py-xl-5 py-lg-3">
+			<div class="title-section mb-md-5 mb-4">
+				<h6 class="w3ls-title-sub">Latest updates</h6>
+				<h3 class="w3ls-title text-uppercase text-bl font-weight-bold">Recent posts</h3>
+			</div>
+			<div class="row">
+				
+
+
+
+{% for raw in data %}
+				<div class="col-lg-4 col-md-6">
+					<div class="card border-0 med-blog">
+						<div class="card-header p-0">
+							<img class="card-img-bottom" src="static/uploads/{{raw[2]}}" alt="image">
+						</div>
+						<div class="card-body border border-top-0">
+							<div class="mb-3">
+								<h5 class="blog-title card-title m-0">{{raw[1]}}</h5>
+								<div class="blog_w3icon">
+									<span>
+										Date & Time:{{raw[3]}}</span>
+										<br>
+										Description : <span>{{raw[4]}}</span>
+								</div>
+							</div>
+							<span>Posted on :{{raw[5]}}</span>
+							<br>
+							<span>Posted by: {{raw[6]}}</span>
+							<!-- <a href="single.html" class="btn blog-btn mt-4">Read more</a> -->
+						</div>
+					</div>
+				</div>
+{% endfor %}
+				
+
+
+
+			</div>
+		</div>
+	</section>
+{% include 'user/footer.html'%}

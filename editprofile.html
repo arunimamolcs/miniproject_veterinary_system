@@ -1,0 +1,124 @@
+{%include 'doctor/header.html' %}
+<body onload="getState({{data[5]}},{{data[6]}})">
+<div class="login px-sm-4 mx-auto mw-100 login-wrapper">
+        <form class="login-wrapper" enctype="multipart/form-data" action="/savedoctoredit" method="post" onsubmit="return checkcompare()">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" name="txtdname" placeholder="" required="" value="{{data[2]}}">
+          </div>
+                     
+           <div class="form-group">
+            <label>House Name</label>
+            <input type="text" class="form-control" name="txthname" placeholder="" required="" value="{{data[4]}}">
+          </div>
+
+          <div class="form-group">
+            <label for="sel1">State</label>
+          <select class="form-control" name="state" onchange="getState(this.value,{{data[6]}})">
+          <option selected>--------SELECT--------</option>
+          {% for s in  state  %}
+          <option {% if data[5]|string == s[0]|string  %}  selected="selected" {% endif %} value={{s[0]}}>{{s[1]}}</option>
+          {% endfor %}
+          </select>
+          </div>
+          <div id="dis">
+          <div class="form-group">
+            <label for="sel1">District</label>
+
+          <select name="district" class="form-control">
+          <option selected>------SELECT-----</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+            <label>Place</label>
+            <input type="text" class="form-control" name="txtplace" placeholder="" required="" value="{{data[7]}}">
+          </div>
+
+          <br>
+
+
+                                       <div class="form-group">
+            <label>DOB</label>
+          <!--  <input size="16" type="text" value="" readonly>
+    <span class="add-on"><i class="icon-th"></i></span> -->
+    
+   <input  id="datepicker" name="txtdate" class="form-control"  required=""/ value="{{data[8]}}">
+    <script>
+        $('#datepicker').datepicker({
+            uiLibrary: 'bootstrap4'
+        });
+    </script>
+
+            <!-- <input type="date" class="form-control" name="txtdate"  required=""> -->
+          </div>
+
+                                        <div class="form-group">
+            <label>Phone</label>
+            <input type="text" class="form-control" name="txtphn" pattern="[0-9]{10}" maxlength="10"placeholder="" required="" value="{{data[9]}}">
+          </div>
+
+          <div class="form-group">
+            <label>Registration no.</label>
+            <input type="text" class="form-control" name="txtregnum" placeholder="" required="" value="{{data[11]}}" >
+          </div>
+
+           <div class="form-group">
+            <label>Year of Registration</label>
+          <!--  <input size="16" type="text" value="" readonly>
+    <span class="add-on"><i class="icon-th"></i></span> -->
+    
+   <input  id="datepicker1" name="yor" class="form-control"  required=""/ value="{{data[12]}}">
+    <script>
+        $('#datepicker1').datepicker({
+            uiLibrary: 'bootstrap4'
+        });
+    </script>
+
+            <!-- <input type="date" class="form-control" name="txtdate"  required=""> -->
+          </div>
+
+           <div class="form-group">
+            <label>Specification</label>
+            <input type="text" class="form-control" name="spec" placeholder="" required="" value="{{data[13]}}">
+          </div>
+                              
+        
+
+          <div class="form-group">
+          <label>Photo</label>
+          <input class="form-control"  name="file" type="file" accept="image/*" onchange="loadFile(event)" value="{{data[11]}}">
+          <br>
+          <img style="max-width: 200px;max-height: 200px" src="/static/uploads/{{data[15]}}" id="output"/>
+          <script>
+           var loadFile = function(event) {
+                var reader = new FileReader();
+                reader.onload = function(){
+                 var output = document.getElementById('output');
+                  output.src = reader.result;
+               };
+                reader.readAsDataURL(event.target.files[0]);
+              };
+          </script>
+      </div>
+           <button type="submit" class="btn submit mt-4">Update</button>
+          <button type="reset" class="btn submit mt-4 btn-danger">Cancel</button>
+      </form>
+  </div>
+</body>
+  
+
+
+{%include 'doctor/footer.html' %}
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+  
+   
+  function getState(state,selectedDistrict){
+   $.post('/getDistrict', {state:state,selectedDistrict:selectedDistrict}, function(response){ 
+      // alert("success");
+      $("#dis").html(response);
+});
+ }
+ </script>

@@ -1,0 +1,142 @@
+
+{%include 'user/header.html' %}
+    <!-- //second header -->
+
+    <!-- banner -->
+    
+
+  <!-- page details -->
+  
+  <section class="logins py-5">
+    <div class="container py-xl-5 py-lg-3 col-md-6">
+      <div class="title-section mb-md-5 mb-4">
+        <h6 class="w3ls-title-sub">PET DETAILS</h6>
+        <h3 class="w3ls-title text-uppercase text-dark font-weight-bold">Add Now</h3>
+      </div>
+
+<form method="POST" enctype="multipart/form-data" action="/saveuserpetdetails" onsubmit="return checkcompare()" >
+        <div class="container"> 
+          
+          <div class="form-group" >
+            <label>Pet Name</label>
+            <input type="text" class="form-control" name="txtpname" placeholder="" required="">
+          </div>
+                                        
+
+            <div class="form-group">
+            <label for="sel1">Species</label>
+          <select class="form-control" name="species" onchange="getSpecies(this.value)" required="">
+          <option value="">--------SELECT--------</option>
+          {% for s in  species  %}
+          <option value={{s[0]}}>{{s[1]}}</option>
+          {% endfor %}
+          </select>
+          </div>
+          <div id="brd">
+          <div class="form-group">
+            <label for="sel1">Breed</label>
+
+          <select name="breed" class="form-control" required="">
+          <option value="">------SELECT-----</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+            <label>Other</label>
+            <input type="text" class="form-control" name="txtother" placeholder="" >
+          </div>
+
+
+     <div class="form-group">
+            <label>Gender</label>
+            <label class="radio-inline"><input type="radio" name="gender" value="female" placeholder="" required="">Female</label>
+                                               <label class="radio-inline"> <input type="radio"  name="gender" value="male" placeholder="" required="">Male</label>
+          </div>
+
+          <br>
+
+                                       
+          <div class="form-group">
+            <label>Age</label>
+            <input type="text" class="form-control" name="txtage" placeholder="" required="">
+            <select name="txtweekmonth">
+              <option value="weeks">Weeks</option>
+                   <option value="months">Months</option>
+ 
+  </select>
+          </div>
+
+          <div class="form-group">
+            <label>Color</label>
+            <input type="text" class="form-control" name="txtdesc"  placeholder="" required="">
+          </div>
+
+          <div class="form-group">
+          <label>Photo</label>
+          <input class="form-control"  name="file" type="file" accept="image/*" onchange="loadFile(event)" required="">
+          <br>
+          <img style="max-width: 200px;max-height: 200px" id="output"/>
+          <script>
+           var loadFile = function(event) {
+                var reader = new FileReader();
+                reader.onload = function(){
+                 var output = document.getElementById('output');
+                  output.src = reader.result;
+               };
+                reader.readAsDataURL(event.target.files[0]);
+              };
+          </script>
+
+</div>
+
+
+
+
+          
+
+
+                                      
+          <button type="submit" class="btn submit mt-4">Save</button>
+          <button type="reset" class="btn submit mt-4 btn-danger">Cancel</button>
+         
+{%include 'user/footer.html' %}
+  <!-- //move top icon -->
+
+</body>
+</form>
+</html>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+  
+  function getSpecies(species){
+   $.post('/getBreed', {species:species}, function(response){ 
+      // alert("success");
+      $("#brd").html(response);
+});
+ }
+  //  var passcomapre
+  //  var msg=document.getElementById('msg')
+  //  msg.style["display"]="none"
+  // function checkpass(){
+  //   var pass=document.getElementById('password').value
+  //   var repass=document.getElementById('repassword').value
+  //   var msg=document.getElementById('msg') 
+  //   msg.style["display"]="none"
+  //   if(repass!="" &&  pass!="")
+  //     if(repass==pass)
+  //     {
+  //       msg.style["display"]="none"
+  //       passcomapre= true
+  //     }
+  //     else
+  //     {
+  //       passcomapre= false
+  //       msg.style["display"]="block"
+  //     }
+    
+  // }
+  // function checkcompare(){
+  //   return passcomapre
+  // }
+</script>

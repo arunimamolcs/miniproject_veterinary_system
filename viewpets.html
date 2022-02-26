@@ -1,0 +1,99 @@
+{%include 'user/header.html' %}
+
+<div style="margin: 50px;display: flex;">
+{% for p in petlist %}
+<div class="card col-md-4"  style="width: 18rem;margin-right: 10px">
+  <img src="/static/uploads/{{p[11]}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{p[2]}}</h5>
+    <h6>{{p[3]}}</h6>
+    <h6>{{p[4]}}</h6>
+    <h6>{{p[5]}}</h6>
+    <h6>{{p[6]}}</h6>
+    <h6>{{p[7]}}</h6>
+    <h6>{{p[10]}}</h6>
+    <!-- <div></div> -->
+<button type="button" class="btn btn-danger" onclick="delpets({{p[0]}})">Delete</button>
+<button type="button" class="btn btn-success" onclick="editpets({{p[0]}})">Edit</button>
+<a href="/showviewmore?petid={{p[0]}}">view more</a>
+     </div>
+  
+</div>
+{% endfor %}
+</div>
+{%include 'user/footer.html' %}
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+	
+	function delpets(petid){
+		var res;
+
+				var r=confirm("Do you want to delete");
+				if(r == true){
+			
+$.post('/delpets', {petid:petid}, function(response){
+			window.location.href="/showpets"
+		});
+
+
+			}
+
+
+
+
+		
+	}
+
+	function editpets(petid){
+		window.location.href="/showeditpets?petid="+petid
+
+	}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

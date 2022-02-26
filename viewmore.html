@@ -1,0 +1,74 @@
+{%include 'user/header.html' %}
+<head>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+
+
+</head>
+<div style="margin: 50px">
+<table id="species" class="table">
+<thead>
+  
+
+  <th>Diseases that can affect to species</th>
+  <th>Diseases that can spread from species</th>
+  <th>food</th>
+  <th>Symptoms</th>
+  <th>Medicines</th>
+  </thead>
+  <tbody>
+  
+
+  <tr>
+        
+      <td>{{data[0]}}</td>
+      <td>{{data[1]}}</td>
+      <td>{{data[2]}}</td>
+      <td>{{data[3]}}</td>
+      <td>{{data[4]}}</td>
+      
+     
+
+         
+  </tr>
+</tbody>
+</table>
+<table id="breed" class="table">
+  <thead>
+  <th>Diseases that can affect to Breed</th>
+  <th>Diseases that can spread from Breed</th>
+  <th>food</th>
+  <th>Symptoms</th>
+  
+  <th>Medicines</th>
+  
+  </thead>
+  <tbody>
+
+  <tr>
+        
+      <td>{{data1[0]}}</td>
+      <td>{{data1[1]}}</td>
+      <td>{{data1[2]}}</td>
+      <td>{{data1[3]}}</td>
+      <td>{{data1[4]}}</td>
+      
+     
+
+         
+  </tr>
+</tbody>
+</table>
+</div>
+  <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+ <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript" src="/static/js/print.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#species').DataTable();
+    $('#breed').DataTable();
+} );
+  
+</script>
+ {%include 'user/footer.html' %}

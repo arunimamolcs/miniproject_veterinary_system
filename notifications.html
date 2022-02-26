@@ -1,0 +1,21 @@
+{%include 'doctor/header.html' %}
+<form method="POST" action="/showdocnotification">
+
+
+
+<table class="table">
+ <!--  <th>Userid</th> -->
+  <th>Name</th>
+  
+{% for p in chat %}
+
+	 <tr>
+       <!-- <div class = "alert alert-success col-md-8"> -->
+         <td><a href="shownot?to_id={{p[1]}}">{{p[0]}}</a></td>
+         <!-- <td>{{p[1]}}</td>
+ -->
+
+       </tr>
+</div>       
+{% endfor %}
+{%include 'doctor/footer.html' %}

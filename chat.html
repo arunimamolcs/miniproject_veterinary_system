@@ -1,0 +1,344 @@
+{%include 'doctor/header.html' %}
+
+
+
+
+<style>
+
+/* CSS talk bubble */
+.talk-bubble {
+	margin: 9px;
+  display: inline-block;
+  position: relative;
+	width: 200px;
+	height: auto;
+	background-color: lightyellow;
+}
+.border{
+  border: 8px solid #666;
+}
+.round{
+  border-radius: 30px;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+
+}
+
+/* Right triangle placed top left flush. */
+.tri-right.border.left-top:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: -40px;
+	right: auto;
+  top: -8px;
+	bottom: auto;
+	border: 32px solid;
+	border-color: #666 transparent transparent transparent;
+}
+.tri-right.left-top:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: -20px;
+	right: auto;
+  top: 0px;
+	bottom: auto;
+	border: 22px solid;
+	border-color: lightyellow transparent transparent transparent;
+}
+
+/* Right triangle, left side slightly down */
+.tri-right.border.left-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: -40px;
+	right: auto;
+  top: 30px;
+	bottom: auto;
+	border: 20px solid;
+	border-color: #666 #666 transparent transparent;
+}
+.tri-right.left-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: -20px;
+	right: auto;
+  top: 38px;
+	bottom: auto;
+	border: 12px solid;
+	border-color: lightyellow lightyellow transparent transparent;
+}
+
+/*Right triangle, placed bottom left side slightly in*/
+.tri-right.border.btm-left:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: -8px;
+  right: auto;
+  top: auto;
+	bottom: -40px;
+	border: 32px solid;
+	border-color: transparent transparent transparent #666;
+}
+.tri-right.btm-left:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 0px;
+  right: auto;
+  top: auto;
+	bottom: -20px;
+	border: 22px solid;
+	border-color: transparent transparent transparent lightyellow;
+}
+
+/*Right triangle, placed bottom left side slightly in*/
+.tri-right.border.btm-left-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 30px;
+  right: auto;
+  top: auto;
+	bottom: -40px;
+	border: 20px solid;
+	border-color: #666 transparent transparent #666;
+}
+.tri-right.btm-left-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 38px;
+  right: auto;
+  top: auto;
+	bottom: -20px;
+	border: 12px solid;
+	border-color: lightyellow transparent transparent lightyellow;
+}
+
+/*Right triangle, placed bottom right side slightly in*/
+.tri-right.border.btm-right-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: 30px;
+	bottom: -40px;
+	border: 20px solid;
+	border-color: #666 #666 transparent transparent;
+}
+.tri-right.btm-right-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: 38px;
+	bottom: -20px;
+	border: 12px solid;
+	border-color: lightyellow lightyellow transparent transparent;
+}
+/*
+	left: -8px;
+  right: auto;
+  top: auto;
+	bottom: -40px;
+	border: 32px solid;
+	border-color: transparent transparent transparent #666;
+	left: 0px;
+  right: auto;
+  top: auto;
+	bottom: -20px;
+	border: 22px solid;
+	border-color: transparent transparent transparent lightyellow;
+
+/*Right triangle, placed bottom right side slightly in*/
+.tri-right.border.btm-right:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -8px;
+	bottom: -40px;
+	border: 20px solid;
+	border-color: #666 #666 transparent transparent;
+}
+.tri-right.btm-right:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: 0px;
+	bottom: -20px;
+	border: 12px solid;
+	border-color: lightyellow lightyellow transparent transparent;
+}
+
+/* Right triangle, right side slightly down*/
+.tri-right.border.right-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -40px;
+  top: 30px;
+	bottom: auto;
+	border: 20px solid;
+	border-color: #666 transparent transparent #666;
+}
+.tri-right.right-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -20px;
+  top: 38px;
+	bottom: auto;
+	border: 12px solid;
+	border-color: lightyellow transparent transparent lightyellow;
+}
+
+/* Right triangle placed top right flush. */
+.tri-right.border.right-top:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -40px;
+  top: -8px;
+	bottom: auto;
+	border: 32px solid;
+	border-color: #666 transparent transparent transparent;
+}
+.tri-right.right-top:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -20px;
+  top: 0px;
+	bottom: auto;
+	border: 20px solid;
+	border-color: lightyellow transparent transparent transparent;
+}
+
+/* talk bubble contents */
+.talktext{
+  padding: 1em;
+	text-align: left;
+  line-height: 1.5em;
+}
+.talktext p{
+  /* remove webkit p margins */
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
+</style>
+
+<br>
+
+<div  class="col-lg-4 col-md-6">
+					<div style="float: right;!important" class="card border-0 med-blog">
+						<div style="float: right;!important" class="card-header p-0">
+<div id="chatarea" style="width:400px; height:400px; background-color:#00ff80;overflow:scroll;">
+<!-- <div id="chatarea">  -->
+<!-- <div class="talk-bubble tri-right left-top"> -->
+
+	{% for raw  in messages %}
+		{% if raw[1]==from_id %}
+		<div class="talk-bubble tri-left round left-in" style="float:right; !important">
+		  <div class="talktext" style="float:right; !important">
+		    <p>{{raw[3]}}</p>
+		  </div>
+		</div>
+		{% else %}
+		<div class="talk-bubble tri-left round left-in">
+		  <div class="talktext">
+		    <p>{{raw[3]}}</p>
+		  </div>
+		</div>
+		{% endif %}
+	{% endfor %}
+<!-- </div> -->
+</div>
+<br>
+<div style="width:400px; height:100px;">
+<textarea id="myTextarea" placeholder="type your message" style="width:400px; height:80px;" onkeypress="return runScript(event)"> </textarea>
+
+</div>
+</div>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+function runScript(e)
+{
+if(e.keyCode == 13)
+{
+
+  var textbox = document.getElementById("myTextarea").value;
+  console.log(textbox)
+  document.getElementById("myTextarea").value = ''
+
+  document.getElementById("chatarea").innerHTML = document.getElementById("chatarea").innerHTML +"<div style='float:right; !important' class='talk-bubble tri-right round '><div class='talktext' style='float:right; !important'><p>"+textbox+"</p></div></div>"
+  $.post('/send1', {message: textbox}, function(response){
+  
+	console.log(response)
+  gotoBottom("chatarea")
+
+  });
+ }
+ return true;
+}
+gotoBottom("chatarea")
+var a="{{messages[-1][0]}}"
+var myVar = setInterval(getnewmessage, 5000);
+function getnewmessage() {
+	var talking_to = "{{ talking_to }}"
+	var from_id = "{{ from_id }}"
+	console.log("get messgae ",talking_to, from_id)
+  $.post('/getnewmessage',{"get_from": talking_to, "from_id":from_id}, function(response){
+	console.log(response)
+	if(response=="no_msg")
+	{
+
+	}
+	else
+	{
+		var msgdata=JSON.parse(response)
+		if(a!= msgdata["id"])
+			{
+				a= msgdata["id"]
+		// if(msgdata.from_id != from_id ){
+		document.getElementById("chatarea").innerHTML = document.getElementById("chatarea").innerHTML +"<div class='talk-bubble tri-left round left-in' style='float:left; !important'><div class='talktext' style='float:left; !important'><p>"+msgdata.message+"</p></div></div>"
+		gotoBottom("chatarea")
+	}
+	}
+  });
+}
+function gotoBottom(id){
+   var element = document.getElementById(id);
+   element.scrollTop = element.scrollHeight - element.clientHeight;
+}
+</script>
+

@@ -1,0 +1,140 @@
+{%include 'doctor/header.html' %}
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Change Appointment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <input type="hidden"  name="" id="fpid">
+         <div class="form-group">
+    <label for="date">Date</label>
+     <input type="date" class="form-control" id="date1" required="">
+  
+  <script type="text/javascript">
+  var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+ if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("date1").setAttribute("min", today);
+              </script>
+  
+  </div>
+   <div class="form-group">
+    <label for="time">Time</label>
+    <input type="time" class="form-control" id="time" required="">
+  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" onclick="changeAppf()" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class="table">
+  <th>Owner name</th>
+  <th>Phone phone</th>
+  <th>Owner Email</th>
+  <th>Farm name</th>
+  <th>Farm phone</th>
+  <th>Farm Email</th>
+  <th>Reason</th>
+  <th>Appointment date</th>
+  <th>Appointment Time</th>
+  
+{% for p in appointment %}
+
+  <tr>
+        
+      <td>{{p[0]}}</td>
+      <td>{{p[1]}}</td>
+      <td>{{p[2]}}</td>
+      <td>{{p[3]}}</td>
+      <td>{{p[4]}}</td>
+      <td>{{p[5]}}</td>
+      <td>{{p[6]}}</td>
+      <td>{{p[7]}}</td>
+      <td>{{p[8]}}</td>
+
+
+  <td><button type="button" onclick="accept({{p[9]}})" class="btn submit mt-4">Accept</button></td>
+  <td><button type="button"  onclick="reject({{p[9]}})" class="btn submit mt-4">Reject</button></td>
+  <td><button type="button" data-id="{{p[9]}}" class="btn btn-primary openModal" data-toggle="modal" data-target="#exampleModal">
+  Change Appointment
+</button>
+</td>
+</tr>
+  {% endfor %}
+</table>
+
+{%include 'doctor/footer.html' %}
+ 
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+  function accept(a) {
+    console.log(a)
+    $.post('/accept2',{b:a},function(response){
+       location.reload();
+    })
+  
+   
+    }
+    function reject(a) {
+    $.post('/reject2',{b:a},function(response){
+       location.reload();
+    })
+  }
+ function changedatef(a) {
+
+$('#myModal').modal('show');
+
+    }
+    $(document).on("click", ".openModal", function () {
+     var fpid = $(this).data('id');
+     console.log(fpid)
+     $(".modal-body #fpid").val( fpid );
+    // $('#addBookDialog').modal('show');
+});
+    
+function changeAppf(){
+  var date=document.getElementById("date1")
+var time=document.getElementById("time")
+  console.log(time.checkValidity())
+  console.log(date.checkValidity())
+if(date.checkValidity()==false || time.checkValidity()==false)
+{
+
+alert('Invalid Date or Time')
+return
+}
+  var date=$("#date1").val()
+   var time=$("#time").val()
+    var fpid=$("#fpid").val()
+    console.log(date,time,fpid)
+     $.post('/changedatef',{"date":date,"time":time, "fpid": fpid},function(response){
+       location.reload();
+    }) 
+}
+</script>

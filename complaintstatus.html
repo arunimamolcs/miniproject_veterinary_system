@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  {%include 'user/header.html' %}
+
+
+<div class="col-md-8">
+ {% for c in compresponse %}
+<div class = "alert alert-success col-md-8 alert-dismissible">
+
+    <button  class="close" onclick="notclose({{c[6]}})" data-dismiss="alert">&times;</button>
+ <h4>Response</h4>
+ <br>
+ <h8>Status : {{c[0]}}</h8>
+
+  <h6>Complaint subject : {{c[1]}}</h6>
+
+  <h6>Complaint Description : {{c[2]}}</h6>
+  <h6>Complaint To  : {{c[3]}}</h6>
+  <h6>Admin Response   : {{c[4]}}</h6>
+  <h7>Clinic Response : {{c[5]}}</h7>
+  
+</div>
+{% endfor %}
+</div>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+  
+  
+   
+
+<script type="text/javascript">
+  function notclose(cmpid){
+    console.log(cmpid)
+    $.post('/closecomp', {id:cmpid}, function(response){ 
+      
+});
+  }
+</script>
+
+{%include 'user/footer.html' %}
+  
+

@@ -1,0 +1,105 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  {%include 'clinic/header.html' %}
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Give Response</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <input type="hidden"  name="" id="cmpid">
+         <div class="form-group">
+            <label>Response</label>
+            
+  <textarea name="txtres" class="form-control" id="txt1" /></textarea>
+          </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" onclick="giveres()" class="btn btn-primary">Send Response</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="col-md-8">
+ {% for c in complaint %}
+
+
+  <div class = "alert alert-success col-md-8 alert-dismissible">
+
+    <button  class="close" onclick="notclose({{c[4]}})" data-dismiss="alert">&times;</button>
+ <h4>Details</h4>
+ <br>
+  <h6>Complaint From : {{c[0]}}</h6>
+
+  <h6>Complaint Subject : {{c[1]}}</h6>
+  <h6>Description   : {{c[2]}}</h6>
+  <h6>Date Of Complaint   : {{c[3]}}</h6>
+
+ <button type="button" data-id="{{c[4]}}" class="btn btn-primary openModal" data-toggle="modal" data-target="#exampleModal">
+  Give Response
+</button>
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button> -->
+
+
+</div>
+{% endfor %}
+</div>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+<!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
+
+<script type="text/javascript">
+  function popup() {
+// $('#exampleModal').appendTo("body").modal('show');
+// $('#exampleModal').modal('show');
+// $('#exampleModal').appendTo("body") 
+
+    }
+
+    $(document).on("click", ".openModal", function () {
+     var cmpid = $(this).data('id');
+     console.log(cmpid)
+     $(".modal-body #cmpid").val( cmpid );
+   
+});
+    function notclose(cmpid){
+    console.log(cmpid)
+    $.post('/closecomp', {id:cmpid}, function(response){ 
+      
+});
+}
+  function giveres(){
+    var ab=document.getElementById("txt1").value;
+    var cmpid=$("#cmpid").val()
+    console.log(ab,cmpid)
+     $.post('/clinicresponse',{response:ab,compid:cmpid},function(response){
+       location.reload();
+       $('#exampleModal').modal('close');
+       //console.log("gfhfhf")
+    }) 
+
+}
+  
+</script>
+{%include 'clinic/footer.html' %}

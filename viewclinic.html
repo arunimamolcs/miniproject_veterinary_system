@@ -1,0 +1,49 @@
+{%include 'admin/header.html' %}
+<table class="table">
+  <th>Clinic Name</th>
+  <th>Registration Number</th>
+  <th>Govt. Authorised Registration Form Number</th>
+  <th>Email Id</th>
+  <th>Contact No</th>
+  
+{% for c in cliniclist %}
+
+  <tr>
+        
+      <td>{{c[0]}}</td>
+      <td>{{c[1]}}</td>
+      <td>{{c[2]}}</td>
+      <td>{{c[3]}}</td>
+      <td>{{c[4]}}</td>
+      
+
+  <td><button type="button" onclick="accept({{c[5]}})" class="btn submit mt-4">Accept</button></td>
+  <td><button type="button"  onclick="reject({{c[5]}})" class="btn submit mt-4">Reject</button></td>
+  <td>
+    
+
+  </td>
+  </tr>
+  {% endfor %}
+</table>
+
+
+{%include 'admin/footer.html' %}
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+  function accept(a) {
+    console.log(a)
+    $.post('/acceptclinic',{b:a},function(response){
+       location.reload();
+    })
+  
+   
+    }
+    function reject(a) {
+    $.post('/rejectclinic',{b:a},function(response){
+       location.reload();
+    })
+  }
+  
+</script>
+

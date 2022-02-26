@@ -1,0 +1,59 @@
+
+
+{%include 'admin/header.html' %}
+<h3>ADD BREED</h3>
+
+<form method="POST" enctype="multipart/form-data" action="/savebreed">
+  <div class="col-md-6">
+
+          <div class="form-group">
+            <label for="sel1">Species</label>
+          <select class="form-control" name="species" onchange="getSpecies(this.value)" required="">
+          <option value="">--------SELECT--------</option>
+          {% for s in  species  %}
+          <option value={{s[0]}}>{{s[1]}}</option>
+          {% endfor %}
+          </select>
+          </div>
+          <div class="form-group">
+            <label>Breed</label>
+            <input type="text" class="form-control" pattern="[a-zA-Z][a-zA-Z\s]*" name="breed"  placeholder="" required="">
+            </div>
+                                   
+      <div class="form-group">
+            <label>Diseases affected to pets</label>
+            <div>
+  <textarea name="distopet" class="form-control" required="" pattern="[a-zA-Z][a-zA-Z\s]*" /></textarea>
+          </div>
+
+      <div class="form-group">
+            <label>Diseases spread from pets</label>
+            <div>
+  <textarea name="disfrompet" class="form-control" required="" pattern="[a-zA-Z][a-zA-Z\s]*" /></textarea>
+            </div>
+      <div class="form-group">
+            <label>Food</label>
+            <div>
+  <textarea name="food" class="form-control" required=""  pattern="[a-zA-Z][a-zA-Z\s]*"/></textarea>
+            </div>
+            <label>Symptoms</label>
+            <div>
+            <textarea name="symptoms" class="form-control" required="" pattern="[a-zA-Z][a-zA-Z\s]*"/></textarea>
+            </div>
+            
+            <div class="form-group" >
+            <label>Vaccination medicines</label>
+            <div>
+  <textarea name="vacmed" class="form-control" required="" pattern="[a-zA-Z][a-zA-Z\s]*"/></textarea>
+          </div>
+          <button type="submit" class="btn submit mt-4">Save</button>
+           <button type="reset" class="btn submit mt-4 btn-danger">Cancel</button>
+      </form> 
+
+
+
+
+
+
+
+

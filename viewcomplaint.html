@@ -2,7 +2,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  {%include 'clinic/header.html' %}
+
+
+{%include 'admin/header.html' %}
+
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -38,12 +41,10 @@
 
 
 
-
 <div class="col-md-8">
  {% for c in complaint %}
 
-
-  <div class = "alert alert-success col-md-8 alert-dismissible">
+<div class = "alert alert-success col-md-8 alert-dismissible">
 
     <button  class="close" onclick="notclose({{c[4]}})" data-dismiss="alert">&times;</button>
  <h4>Details</h4>
@@ -54,7 +55,7 @@
   <h6>Description   : {{c[2]}}</h6>
   <h6>Date Of Complaint   : {{c[3]}}</h6>
 
- <button type="button" data-id="{{c[4]}}" class="btn btn-primary openModal" data-toggle="modal" data-target="#exampleModal">
+  <button type="button" data-id="{{c[4]}}" class="btn btn-primary openModal" data-toggle="modal" data-target="#exampleModal">
   Give Response
 </button>
 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -70,7 +71,7 @@
 <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
 
 <script type="text/javascript">
-  function popup() {
+	function popup() {
 // $('#exampleModal').appendTo("body").modal('show');
 // $('#exampleModal').modal('show');
 // $('#exampleModal').appendTo("body") 
@@ -83,23 +84,24 @@
      $(".modal-body #cmpid").val( cmpid );
    
 });
-    function notclose(cmpid){
+     function notclose(cmpid){
     console.log(cmpid)
     $.post('/closecomp', {id:cmpid}, function(response){ 
       
 });
 }
-  function giveres(){
-    var ab=document.getElementById("txt1").value;
-    var cmpid=$("#cmpid").val()
+
+	function giveres(){
+		var ab=document.getElementById("txt1").value;
+		var cmpid=$("#cmpid").val()
     console.log(ab,cmpid)
-     $.post('/clinicresponse',{response:ab,compid:cmpid},function(response){
+     $.post('/adminresponse',{response:ab,compid:cmpid},function(response){
        location.reload();
        $('#exampleModal').modal('close');
        //console.log("gfhfhf")
     }) 
 
 }
-  
+	
 </script>
-{%include 'clinic/footer.html' %}
+

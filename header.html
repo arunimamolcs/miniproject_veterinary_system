@@ -21,6 +21,11 @@
 	<!--// Meta tag Keywords -->
 
 	<!-- Custom-Files -->
+	
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="/static/css/bootstrap.css">
 	<!-- Bootstrap-Core-CSS -->
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css" media="all" />
@@ -47,12 +52,12 @@
 							<div class="row">
 								<div class="col-4 header-top_w3layouts">
 									<p class="text-bl">
-										<span class="fa fa-map-marker mr-2"></span>YAS complex,muvattupuzha
+										<span class="fa fa-map-marker mr-2"></span>
 									</p>
 								</div>
 								<div class="col-4 header-top_w3layouts">
 									<p class="text-bl">
-										<span class="fa fa-phone mr-2"></span>+1 000263676
+										<span class="fa fa-phone mr-2"></span>
 									</p>
 								</div>
 								<!-- social icons -->
@@ -88,13 +93,13 @@
 								<div class="col-xl-3 col-lg-4 col-6 top-w3layouts p-md-0 text-right">
 									<!-- login -->
 									<a href="/login1" class="login-button-2 text-uppercase text-bl">
-										<span class="fa fa-sign-in mr-2"></span>Login</a>
+										<span class="fa fa-sign-in mr-2"></span>Logout</a>
 									<!-- //login -->
 								</div>
 								<div class="col-xl-3 col-lg-4 col-6 header-w3layouts text-md-right text-left">
 									<!-- register -->
-									<a href="/showuserreg" class="login-button-2 text-uppercase text-bl">
-										<span class="fa fa-pencil-square-o mr-2"></span>Register</a>
+									<a href="/showchangepasswordcl" class="login-button-2 text-uppercase text-bl">
+										<span class="fa fa-pencil-square-o mr-2"></span>Change Password</a>
 									<!-- //register -->
 								</div>
 							</div>
@@ -114,7 +119,7 @@
 						<h1>
 							<a href="index.html">
 								<span class="fa fa-user-md mr-2"></span>
-								<span class="logo-sp">Pet</span> Sake
+								<span class="logo-sp">PET</span> SAKE
 							</a>
 						</h1>
 					</div>
@@ -125,21 +130,22 @@
 							<label for="drop" class="toggle">Menu</label>
 							<input type="checkbox" id="drop" />
 							<ul class="menu">
-								<li><a href="/">Home</a></li>
-								<li class="mx-lg-4 mx-md-3 my-md-0 my-2"><a href="/showreadmore" class="active">About Us</a></li>
+								<li><a href="/showclinichome">Home</a></li>
+								<li class="mx-lg-4 mx-md-3 my-md-0 my-2"><a href="/showclinicdetails">About Us</a></li>
 								
 								<li class="mx-lg-4 mx-md-3 my-md-0 my-2">
 									<!-- First Tier Drop Down -->
-									<label for="drop-2" class="toggle toogle-2">Register <span class="fa fa-angle-down" aria-hidden="true"></span>
+									<label for="drop-2" class="toggle toogle-2">Staff Registration<span class="fa fa-angle-down" aria-hidden="true"></span>
 									</label>
-									<a href="#">Register <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+									<a href="#">Staff Registration <span class="fa fa-angle-down" aria-hidden="true"></span></a>
 									<input type="checkbox" id="drop-2" />
 									<ul>
-										<li><a href="/showuserreg" class="drop-text">USER</a></li>
-										<li><a href="/showclinicreg" class="drop-text">CLINIC</a></li>
+										<li><a href="/showdoctorreg" class="drop-text">DOCTOR</a></li>
+										
 									</ul>
 								</li>
-								<li><a href="/showcontact">Contact Us</a></li>
+								<li><a href="/showcliniccomp">View Complaints</a></li>
+								<li class="mx-lg-4 mx-md-3 my-md-0 my-2"><a href="/clinicreports">View Reports</a></li>
 							</ul>
 						</nav>
 					</div>

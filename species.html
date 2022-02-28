@@ -1,0 +1,48 @@
+
+
+{%include 'admin/header.html' %}
+<form method="POST" enctype="multipart/form-data" action="/savespecies">
+  <h3>ADD SPECIES</h3>
+<div class="col-md-6">
+          <div class="form-group">
+            <label>Species Name</label>
+            <input type="text" class="form-control" name="sname"  placeholder="" required="">
+          </div>
+                                      
+      
+      <div class="form-group">
+            <label>Diseases affected</label>
+            <div>
+  <textarea name="distopet"  class="form-control" ></textarea>
+          </div>
+
+      <div class="form-group">
+            <label>Diseases spread from species</label>
+            <div>
+  <textarea name="disfrompet" class="form-control"  ></textarea>
+            </div>
+      <div class="form-group">
+            <label>Food</label>
+            <div>
+  <textarea name="food"  class="form-control" ></textarea>
+            </div>
+            <label>Symptoms</label>
+            <div>
+            <textarea name="symptoms" class="form-control" ></textarea>
+            </div>
+            <div class="form-group">
+            <label>Vaccination medicines</label>
+            <div>
+  <textarea name="vacmed" class="form-control"></textarea>
+          </div>
+          <button type="submit" class="btn submit mt-4">Save</button>
+          <button type="reset" class="btn submit mt-4 btn-danger">Cancel</button>
+          </div>
+      </form> 
+
+
+
+
+
+
+
